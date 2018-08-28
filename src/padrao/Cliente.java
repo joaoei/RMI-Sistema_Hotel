@@ -20,7 +20,7 @@ public class Cliente {
 		
 		try {
 			while (true) {
-				System.out.print("\nSistema de Reserva de Hotel");
+				System.out.print("\n\nSistema de Reserva de Hotel");
 				System.out.print("\n1 - Reservar Quarto \n2 - Listar Quartos Disponiveis \n3 - Sair");
 				System.out.print("\n\nEscolha uma opcao: ");
 				
@@ -57,6 +57,7 @@ public class Cliente {
 				}
 			}
 		} catch (Exception e) {
+			System.out.println("Erro encontrado: ");
 			e.printStackTrace();
 		}
 	}
