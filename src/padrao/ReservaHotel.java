@@ -39,7 +39,8 @@ public class ReservaHotel  extends UnicastRemoteObject implements IReserva {
 
 	@Override
 	public boolean reservarQuarto(int tipo_quarto, String nome_cliente) throws RemoteException {
-		if(quartos.get(quarto).getQuartosDisponiveis > 0) {
+		if(quartos.get(tipo_quarto).getQuartosDisponiveis() > 0) {
+			quartos.get(tipo_quarto).reservarQuarto();
 			return true;
 		}else
 			return false;
