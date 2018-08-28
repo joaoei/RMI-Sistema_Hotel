@@ -2,42 +2,39 @@ package padrao;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class ReservaHotel  extends UnicastRemoteObject implements IReserva {
 	//Cinco tipos de quartos com diferentes valores de diária
 	
-	private int qtd_quarto1 = 10;
-	private int qtd_quarto2 = 10;
-	private int qtd_quarto3 = 10;
-	private int qtd_quarto4 = 10;
-	private int qtd_quarto5 = 10;
+	private ArrayList<Quarto> quartos = new ArrayList<Quarto>();
 	
-	
-	private double preco_quarto1 = 10.0;
-	private double preco_quarto2 = 25.0;
-	private double preco_quarto3 = 35.0;
-	private double preco_quarto4 = 60.0;
-	private double preco_quarto5 = 100.0;
 	
 	protected ReservaHotel() throws RemoteException { 
 		super(); 
+		quartos.add(new Quarto(10, 0, 10.0));
+		quartos.add(new Quarto(10, 0, 25.0));
+		quartos.add(new Quarto(10, 0, 35.0));
+		quartos.add(new Quarto(10, 0, 60.0));
+		quartos.add(new Quarto(10, 0, 100.0));
 	}
+	
 
 	@Override
 	public String listarQuartosDisponiveis() throws RemoteException {
 		
-		System.out.println("Tipo 1 - vagas: " + qtd_quarto1+" preço: "+preco_quarto1);
-		System.out.println("Tipo 2 - vagas: " + qtd_quarto2+" preço: "+preco_quarto2);
-		System.out.println("Tipo 3 - vagas: " + qtd_quarto3+" preço: "+preco_quarto3);
-		System.out.println("Tipo 4 - vagas: " + qtd_quarto4+" preço: "+preco_quarto4);
-		System.out.println("Tipo 5 - vagas: " + qtd_quarto5+" preço: "+preco_quarto5);
+		System.out.println("Tipo 1 - vagas: " + quartos.get(0).getVagas()+" preço: "+quartos.get(0).getPreco_diaria());
+		System.out.println("Tipo 2 - vagas: " + quartos.get(1).getVagas()+" preço: "+quartos.get(1).getPreco_diaria());
+		System.out.println("Tipo 3 - vagas: " + quartos.get(2).getVagas()+" preço: "+quartos.get(2).getPreco_diaria());
+		System.out.println("Tipo 4 - vagas: " + quartos.get(3).getVagas()+" preço: "+quartos.get(3).getPreco_diaria());
+		System.out.println("Tipo 5 - vagas: " + quartos.get(4).getVagas()+" preço: "+quartos.get(4).getPreco_diaria());
 		
 		
-		return ("Tipo 1 - vagas: " + qtd_quarto1+" preço: "+preco_quarto1 +"\n"
-				+"Tipo 2 - vagas: " + qtd_quarto2+" preço: "+preco_quarto2 + "\n"
-				+"Tipo 3 - vagas: " + qtd_quarto3+" preço: "+preco_quarto3 + "\n"
-				+"Tipo 4 - vagas: " + qtd_quarto4+" preço: "+preco_quarto4 + "\n"
-				+"Tipo 5 - vagas: " + qtd_quarto5+" preço: "+preco_quarto5);
+		return ("Tipo 1 - vagas: " + quartos.get(0).getVagas()+" preço: " +quartos.get(0).getPreco_diaria() +"\n"
+				+"Tipo 2 - vagas: " + quartos.get(1).getVagas()+" preço: "+quartos.get(1).getPreco_diaria() + "\n"
+				+"Tipo 3 - vagas: " + quartos.get(2).getVagas()+" preço: "+quartos.get(2).getPreco_diaria() + "\n"
+				+"Tipo 4 - vagas: " + quartos.get(3).getVagas()+" preço: "+quartos.get(3).getPreco_diaria() + "\n"
+				+"Tipo 5 - vagas: " + quartos.get(4).getVagas()+" preço: "+quartos.get(4).getPreco_diaria());
 	}
 
 	@Override
