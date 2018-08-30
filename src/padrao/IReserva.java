@@ -1,3 +1,13 @@
+/*
+ ===============================================================================
+ ARQUIVO............: IReserva.java
+ DESCRICAO..........: Codigo-fonte correspondente a definicao de uma interface 
+ 					  remota, que especifica os metodos a serem providos do lado
+ 					  servidor.
+ AUTOR..............: João Emmanuel e Irene Ginani
+ ===============================================================================
+*/
+
 package padrao;
 
 import java.rmi.Remote;

@@ -1,3 +1,12 @@
+/*
+ ===============================================================================
+ ARQUIVO............: Servidor.java
+ DESCRICAO..........: Codigo-fonte correspondente a implementacao do servidor,
+ 					  fazendo uso do servente que implementa a interface remota.
+ AUTOR..............: João Emmanuel e Irene Ginani
+ ===============================================================================
+*/
+
 package padrao;
 
 import java.net.MalformedURLException;

@@ -1,3 +1,13 @@
+/*
+ ===============================================================================
+ ARQUIVO............: Cliente.java
+ DESCRICAO..........: Codigo-fonte correspondente a implementacao do cliente,
+ 					  fazendo invocao de metodos remotos disponibilizados no
+ 					  servidor. 
+ AUTOR..............: João Emmanuel e Irene Ginani
+ ===============================================================================
+*/
+
 package padrao;
 
 import java.net.MalformedURLException;

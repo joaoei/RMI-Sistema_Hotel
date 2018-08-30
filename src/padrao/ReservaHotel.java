@@ -1,3 +1,13 @@
+/*
+ ===============================================================================
+ ARQUIVO............: ReservaHotel.java
+ DESCRICAO..........: Codigo-fonte correspondente a definicao de uma interface 
+ 					  remota, que especifica os metodos a serem providos do lado
+ 					  servidor.
+ AUTOR..............: João Emmanuel e Irene Ginani
+ ===============================================================================
+*/
+
 package padrao;
 
 import java.rmi.RemoteException;
@@ -5,10 +15,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 public class ReservaHotel  extends UnicastRemoteObject implements IReserva {
-	//Cinco tipos de quartos com diferentes valores de diária
 	
 	private ArrayList<Quarto> quartos = new ArrayList<Quarto>();
-	
 	
 	protected ReservaHotel() throws RemoteException { 
 		super(); 

@@ -1,3 +1,12 @@
+/*
+ ===============================================================================
+ ARQUIVO............: Quarto.java
+ DESCRICAO..........: Codigo-fonte correspondente a definicao da classe Quarto  
+ 					  que representa os tipos de quartos disponíveis no Hotel
+ AUTOR..............: João Emmanuel e Irene Ginani
+ ===============================================================================
+*/
+
 package padrao;
 
 public class Quarto {
