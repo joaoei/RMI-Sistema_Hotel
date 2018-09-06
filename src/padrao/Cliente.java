@@ -14,12 +14,14 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.ConnectException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Cliente {
 
 	public static void main(String[] args) throws RemoteException, 
-	NotBoundException, MalformedURLException {
+	NotBoundException, MalformedURLException, InputMismatchException, ConnectException {
 		IReserva stub = (IReserva) Naming.lookup("rmi://localhost/ReservaHotel");
 		
 		Scanner input = new Scanner(System.in);
@@ -69,6 +71,7 @@ public class Cliente {
 		} catch (Exception e) {
 			System.out.println("Erro encontrado: ");
 			e.printStackTrace();
+			return;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 /*
  ===============================================================================
  ARQUIVO............: IReserva.java
- DESCRICAO..........: Codigo-fonte correspondente a definicao de uma interface 
+ DESCRICAO..........: Codigo-fonte correspondente a implementação de uma interface 
  					  remota, que especifica os metodos a serem providos do lado
  					  servidor.
  AUTOR..............: João Emmanuel e Irene Ginani
