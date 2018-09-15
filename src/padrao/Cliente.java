@@ -16,28 +16,28 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Scanner;
 import java.rmi.ConnectException;
+import java.util.InputMismatchException;
 
 public class Cliente {
 
 	public static void main(String[] args) throws RemoteException, 
-	NotBoundException, MalformedURLException, ConnectException {
+	NotBoundException, MalformedURLException, ConnectException, InputMismatchException {
 		IReserva stub = null;
 		
 		Scanner input = new Scanner(System.in);
-		int op = 0;
+		String op = "0";
 		int tipo_quarto;
 		String nome_cliente;
 		boolean status;
 		boolean conexao = false;
 		
-		
 			while (true) {
-				System.out.print("\n\nSistema de Reserva de Hotel");
-				System.out.print("\n1 - Reservar Quarto \n2 - Listar Quartos Disponiveis \n3 - Sair");
-				System.out.print("\n\nEscolha uma opcao: ");
+				System.out.print("\n\n-- Sistema de Reserva de Hotel --");
+				System.out.print("\n1 - Reservar Quarto \n2 - Listar Quartos Disponíveis \n3 - Sair");
+				System.out.print("\n\nEscolha uma opção: ");
 				
 				try {
-					op = input.nextInt();
+					op = input.next();
 					
 					//Primeira conexão e Reconexão
 					if (!conexao) {
@@ -45,7 +45,7 @@ public class Cliente {
 					}
 					
 					switch (op) {
-						case 1: // Reserva
+						case "1": // Reserva
 							System.out.print("\nDigite o tipo do quarto: ");
 							tipo_quarto = input.nextInt();
 							
@@ -55,27 +55,30 @@ public class Cliente {
 							status = stub.reservarQuarto(tipo_quarto, nome_cliente);
 							
 							if (status) {
-								System.out.print("\nQuarto reservado com sucesso para " + nome_cliente + "\n");
+								System.out.print("\nQuarto reservado com sucesso para " + nome_cliente + ".\n");
 							} else {
-								System.out.print("\nTipo de quarto indisponivel \n");
+								System.out.print("\nTipo de quarto indisponível. \n");
 							}
 							
 							System.out.print(stub.listarQuartosDisponiveis());
 							break;
-						case 2: // Listar
+						case "2": // Listar
 							System.out.print(stub.listarQuartosDisponiveis());
 							
 							break;
-						case 3:	// Sair
-							System.out.println("O programa sera encerrado.");
+						case "3":	// Sair
+							System.out.print("\nO programa será encerrado.");
 							
 							return;
 						default:
-							System.out.println("Opcao invalida. Por favor, tente novamente.");
+							System.out.println("\nOpção inválida. Por favor, tente novamente.");
 					}
 				} catch (ConnectException e) {
-					System.out.println("Erro: Conexão perdida com o servidor, tente novamente.");
+					System.out.print("\nErro: Conexão perdida com o servidor, tente novamente.");
 					conexao = false;
+				} catch (InputMismatchException e) {
+					System.out.print("\nErro: Formato da entrada inválido, tente novamente.");
+					input.next();
 				}
 			}
 	}
