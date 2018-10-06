@@ -8,28 +8,26 @@
  ===============================================================================
 */
 
-package padrao;
+package cliente;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.ConnectException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import servidor.IReserva;
+import servidor.Quarto;
+
 import java.rmi.ConnectException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 public class Cliente {
 
 	public static void main(String[] args) throws RemoteException, 
-<<<<<<< HEAD
-	NotBoundException, MalformedURLException, InputMismatchException, ConnectException {
-		IReserva stub = (IReserva) Naming.lookup("rmi://localhost/ReservaHotel");
-=======
 	NotBoundException, MalformedURLException, ConnectException, InputMismatchException {
 		IReserva stub = null;
->>>>>>> 91f9f235e7a09ddf060aa7c3ae227ed2bbf7e08e
 		
 		Scanner input = new Scanner(System.in);
 		String op = "0";
@@ -63,14 +61,23 @@ public class Cliente {
 							
 							if (status) {
 								System.out.print("\nQuarto reservado com sucesso para " + nome_cliente + ".\n");
+								
+								ArrayList<ArrayList<Quarto>> q = stub.listarQuartosDisponiveis();
+								
+								for (int i = 0; i < 5; i++) {
+									System.out.print("\nQuarto do tipo "+ (i+1) +" - vagas: "+ q.get(i).size() +" preço: "+ q.get(i).get(0).getPreco_diaria() +".");
+								}
 							} else {
 								System.out.print("\nTipo de quarto indisponível. \n");
 							}
 							
-							System.out.print(stub.listarQuartosDisponiveis());
 							break;
 						case "2": // Listar
-							System.out.print(stub.listarQuartosDisponiveis());
+							ArrayList<ArrayList<Quarto>> quartos = stub.listarQuartosDisponiveis();
+							
+							for (int i = 0; i < 5; i++) {
+								System.out.print("\nQuarto do tipo "+ (i+1) +" - vagas: "+ quartos.get(i).size() +" preço: "+ quartos.get(i).get(0).getPreco_diaria() +".");
+							}
 							
 							break;
 						case "3":	// Sair

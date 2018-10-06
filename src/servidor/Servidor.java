@@ -7,7 +7,7 @@
  ===============================================================================
 */
 
-package padrao;
+package servidor;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
