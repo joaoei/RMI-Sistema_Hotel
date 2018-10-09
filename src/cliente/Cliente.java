@@ -1,41 +1,29 @@
-/*
- ===============================================================================
- ARQUIVO............: Cliente.java
- DESCRICAO..........: Codigo-fonte correspondente a implementacao do cliente,
- 					  fazendo invocao de metodos remotos disponibilizados no
- 					  servidor. 
- AUTOR..............: João Emmanuel e Irene Ginani
- ===============================================================================
-*/
-
 package cliente;
 
 import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.util.Scanner;
+import java.net.URL;
+
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
 
 import servidor.IReserva;
-import servidor.Quarto;
-
-import java.rmi.ConnectException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 public class Cliente {
-
-	public static void main(String[] args) throws RemoteException, 
-	NotBoundException, MalformedURLException, ConnectException, InputMismatchException {
-		IReserva stub = null;
+	public static void main(String[] args) {
+		URL endpoint = null;
+		try {
+			//URL 
+			endpoint = new URL("");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		
-		Scanner input = new Scanner(System.in);
-		String op = "0";
-		int tipo_quarto;
-		String nome_cliente;
-		boolean status;
-		boolean conexao = false;
+		QName qualifiedName = new QName("http://service/", "");
+		Service service = Service.create(endpoint, qualifiedName);
+		IReserva stub = service.getPort(IReserva.class);
 		
+		//Manipula os dados
+		/*
 			while (true) {
 				System.out.print("\n\n-- Sistema de Reserva de Hotel --");
 				System.out.print("\n1 - Reservar Quarto \n2 - Listar Quartos Disponíveis \n3 - Sair");
@@ -95,5 +83,6 @@ public class Cliente {
 					input.next();
 				}
 			}
+		*/
 	}
 }
